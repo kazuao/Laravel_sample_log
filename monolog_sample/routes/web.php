@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+
+    logger()->info('fugafuga'); // ヘルパー関数を使用した方法
+    \Log::warning('hogehoge'); // ファサードを使用した方法
+
     return view('welcome');
 });

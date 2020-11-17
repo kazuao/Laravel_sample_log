@@ -4,6 +4,8 @@ use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 
+use function Psy\debug;
+
 return [
 
     /*
@@ -37,14 +39,14 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single'], #stackを選択した場合、ここを考える
             'ignore_exceptions' => false,
         ],
 
         'single' => [
             'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => 'debug',
+            'path' => storage_path('logs/laravel.log'), #ログの出力先
+            'level' => env('LOG_LEVEL', 'debug'), #ログのアンダー出力レベル
         ],
 
         'daily' => [
